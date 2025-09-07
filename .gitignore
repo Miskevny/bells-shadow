@@ -1,0 +1,17 @@
+# OS crap
+.DS_Store
+Thumbs.db
+
+# Build folders
+/Build/
+/Binaries/
+/Intermediate/
+/Saved/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
