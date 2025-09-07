@@ -1,0 +1,44 @@
+Player Movement Spec (Bell's Shadow) - GameCube Pad
+
+Goal: Smooth 8-way walk with accel and decel. No combat yet.
+
+Controls:
+- GameCube left stick moves the player
+- GameCube A button interacts
+
+Input rules:
+- Read left stick X and Y each frame
+- Build a direction vector from stick values
+- Deadzone 0.15 so tiny stick noise does nothing
+- Normalize diagonal so it is not faster
+
+Speeds:
+- Walk speed 3.5 units per second
+- Acceleration 8 units per second squared
+- Deceleration 10 units per second squared
+- Clamp max velocity to walk speed
+
+States:
+- Idle to Move when stick magnitude > deadzone
+- Move to Idle when stick magnitude <= deadzone and velocity ~ 0
+
+Facing:
+- Face the last nonzero move direction
+- If velocity is zero keep last facing
+
+Collision:
+- Collide with hub walls and props
+- Stay within hub bounds
+
+Camera:
+- Follow player with light lag 0.15 seconds later
+
+TODO in order:
+1. Read GameCube left stick input
+2. Apply deadzone and normalize direction
+3. Compute target velocity = direction * walk speed
+4. Move current velocity toward target using accel and decel
+5. Move character and resolve collisions
+6. Update facing to match movement
+7. If A is pressed near Slayer Master, print Interact for now
+8. Debug print position, velocity, state each frame
